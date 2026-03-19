@@ -1,0 +1,33 @@
+@page
+@model DemoApp.Pages.Chat.IndexModel
+@{
+    ViewData["Title"] = "Chat";
+}
+<div class="page-header"><div class="container-xl"><h1 class="h3 mb-1 fw-semibold">Chat Demo</h1><p class="mb-0 opacity-75">Azure Communication Services Chat</p></div></div>
+<div class="container-xl">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="feature-card">
+                <h5 class="fw-semibold mb-3">Start a Chat Thread</h5>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="mb-3">
+                        <label asp-for="Request.Topic" class="form-label">Chat Topic</label>
+                        <input asp-for="Request.Topic" class="form-control" placeholder="e.g. Customer Support #1234" />
+                        <span asp-validation-for="Request.Topic" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Request.ParticipantEmail" class="form-label">Participant Email</label>
+                        <input asp-for="Request.ParticipantEmail" class="form-control" placeholder="user@example.com" />
+                        <span asp-validation-for="Request.ParticipantEmail" class="text-danger small"></span>
+                    </div>
+                    <button type="submit" class="btn btn-azure">Create Chat Thread</button>
+                </form>
+                @if (Model.ThreadId != null)
+                {
+                    <div class="alert alert-success mt-4"><strong>Chat thread created!</strong><br/>Thread ID: <code>@Model.ThreadId</code></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
