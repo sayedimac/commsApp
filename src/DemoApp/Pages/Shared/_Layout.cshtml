@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Contoso Call Centre</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root { --github-dark: #24292e; --github-dark-secondary: #2f363d; --azure-blue: #0078d4; --azure-blue-light: #50e6ff; }
+        body { background-color: #f6f8fa; }
+        .navbar { background-color: var(--github-dark) !important; border-bottom: 1px solid #444d56; }
+        .navbar-brand, .navbar-nav .nav-link { color: #ffffff !important; }
+        .navbar-nav .nav-link:hover { color: var(--azure-blue-light) !important; }
+        .navbar-nav .nav-link.active { color: var(--azure-blue-light) !important; border-bottom: 2px solid var(--azure-blue-light); }
+        .nav-dropdown .dropdown-menu { background-color: var(--github-dark-secondary); border: 1px solid #444d56; }
+        .nav-dropdown .dropdown-item { color: #ffffff; }
+        .nav-dropdown .dropdown-item:hover { background-color: #444d56; color: var(--azure-blue-light); }
+        .feature-card { background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 1.5rem; transition: box-shadow 0.2s; }
+        .feature-card:hover { box-shadow: 0 4px 16px rgba(0,120,212,0.12); }
+        .feature-card .icon-wrap { width: 48px; height: 48px; border-radius: 8px; background: var(--azure-blue); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .btn-azure { background-color: var(--azure-blue); border-color: var(--azure-blue); color: #fff; }
+        .btn-azure:hover { background-color: #005a9e; border-color: #005a9e; color: #fff; }
+        footer { background-color: var(--github-dark); color: #959da5; border-top: 1px solid #444d56; }
+        footer a { color: #959da5; }
+        footer a:hover { color: var(--azure-blue-light); }
+        .page-header { background: linear-gradient(135deg, var(--github-dark) 0%, #1b2a3b 100%); color: white; padding: 2rem 0; margin-bottom: 2rem; }
+        .status-badge-demo { background: #f0e68c; color: #856404; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-xl">
+            <a class="navbar-brand fw-semibold" asp-page="/Index">
+                Contoso Call Centre
+                <span class="status-badge-demo">DEMO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" asp-page="/Index">Dashboard</a></li>
+                    <li class="nav-item dropdown nav-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Messaging</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-page="/Chat/Index">Chat</a></li>
+                            <li><a class="dropdown-item" asp-page="/Sms/Index">SMS</a></li>
+                            <li><a class="dropdown-item" asp-page="/Email/Index">Email</a></li>
+                            <li><a class="dropdown-item" asp-page="/BulkEmail/Index">Bulk Email</a></li>
+                            <li><a class="dropdown-item" asp-page="/WhatsApp/Index">WhatsApp</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" asp-page="/Calling/Index">Voice &amp; Video</a></li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+    <main>@RenderBody()</main>
+    <footer class="py-4 mt-5">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-md-6"><p class="mb-1 fw-semibold text-white">Contoso Call Centre</p><p class="mb-0 small">Powered by Azure Communication Services</p></div>
+                <div class="col-md-6 text-md-end"><p class="mb-0 small">&copy; @DateTime.Now.Year Contoso. Demo application only.</p></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmVBdRf8A9M3lY5J7SVQK4LhKp2B" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
